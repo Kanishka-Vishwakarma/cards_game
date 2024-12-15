@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Faculty+Glyphic&family=Grenze+Gotisch:wght@100..900&family=Poiret+One&family=Rowdies:wght@300;400;700&family=Rubik+Glitch&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+  
+   /* background: radial-gradient(circle, black, #444, #888);*/
+   background: radial-gradient(circle, #f8f9fa, #e0e0e0, #6c757d);
+
+
+
+}
+
+nav{
+   background-color:#0a061166;
+    color:rgb(0, 0, 0);
+    height:7vh;
+    font-size:5vh;
+    display:flex;
+    align-items:center;
+    padding:0 12px;
+    font-family: "Poiret One", sans-serif;
+    justify-content: center;
+}
+nav ul{
+    list-style-type:none; 
+}
+
+/* Game info container (Time and Flips side by side) */
+.game-info-container {
+    grid-column:1/-1;
+    display: flex;
+    justify-content: space-between;
+   
+}
+
+/* Style each game info item (time and flips) */
+.game-info {
+    font-family: "Poiret One", sans-serif;
+    font-weight:400 ;
+    font-size: 5vh; 
+
+}
+
+/* Style the span that holds the time and flips */
+.game-info span {
+    font-weight: bold;
+    color: #333; /* Dark text color */
+}
+
+.game-container{
+display:grid;
+grid-template-columns:repeat(4,auto);
+grid-gap:10px;
+margin:10px;
+justify-content: center;
+perspective:500px;
+}
+
+.card {
+    position: relative;
+    background-color: rgb(36, 31, 31);
+    height: 125px;
+    width: 125px;
+}
+
+.card-face{
+    position:absolute;
+    width:100%;
+    height : 100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    backface-visibility:hidden;
+    border-style: solid;
+    border-width:1px;
+    border-radius: 1px;
+    transition:transform 500ms ease-in-out;
+}
+
+.card.visible .card-back{
+    transform:rotateY(-180deg);
+}
+
+
+.card.visible .card-front{
+    transform:rotateY(0);
+}
+
+.card.hover .card-value{
+    animation:dance 1s linear infinite 500ms;
+    /*delay by 500 ms since it takes 500ms to flip*/
+}
+
+.overlay-text{
+    display: none;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    justify-content:center ;
+    align-items: center;
+    z-index: 100;
+    color:rgb(255, 255, 255);
+    font-family: "DM Serif Text", serif;
+}
+
+.overlay-text-small{
+    font-size:5vh;
+}
+
+.overlay-text.visible{
+    display:flex;
+    flex-direction: column;
+    animation:overlay-grow 500ms forwards;
+}
+
+@keyframes overlay-grow {
+    from{
+        background-color: rgba(0,0,0,0);
+        font-size:0;
+    }
+    to{
+        font-size:19vh;
+        background-color: rgba(0,0,0,0.8);
+    }
+}
+
+@keyframes dance{
+    0%,100%{transform:rotate(0);}
+    25%{transform:rotate(-30deg);}
+    75%{transform:rotate(30deg);}
+}
+.card-back{
+    background-color: black;
+    border-color:black;
+   
+}
+
+.card-front{
+    transform:rotateY(180deg);
+}
+
+.card-value{
+    transition:transform 100ms ease-in-out;
+    transform:scale(0.9);
+}
+
+
+
+.card-front:hover .card-value{
+    transform:scale(1);
+}
+.back_img{
+    position:absolute;
+    height:125px;
+   width:125px;
+}
+.card-value{
+    height:125px;
+    width:125px;
+}
+
+@media(max-width:600px){
+    .game-container{
+       grid-template-columns:repeat(2,auto);
+    }
+    /*.game-container {
+        grid-template-columns: repeat(4, 1fr); 
+        grid-gap: 5px; 
+        margin:5px;
+      }
+    
+      .game-container .card {
+        width: 70px; 
+        height: 70px;  */
+    
+    .game-info-container{
+        flex-direction: column;
+        align-items: center;
+    }
+}
