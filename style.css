@@ -175,7 +175,7 @@ perspective:500px;
             font-size:0;
         }
         to{
-            font-size:4vh;
+            font-size:6vh;
             background-color: rgba(0,0,0,0.8);
         }
     }
