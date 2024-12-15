@@ -169,16 +169,16 @@ perspective:500px;
     .game-container{
        grid-template-columns:repeat(2,auto);
     }
-    /*.game-container {
-        grid-template-columns: repeat(4, 1fr); 
-        grid-gap: 5px; 
-        margin:5px;
-      }
-    
-      .game-container .card {
-        width: 70px; 
-        height: 70px;  */
-    
+     @keyframes overlay-grow {
+        from{
+            background-color: rgba(0,0,0,0);
+            font-size:0;
+        }
+        to{
+            font-size:4vh;
+            background-color: rgba(0,0,0,0.8);
+        }
+    }
     .game-info-container{
         flex-direction: column;
         align-items: center;
